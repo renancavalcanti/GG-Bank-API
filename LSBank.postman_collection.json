@@ -1,0 +1,1600 @@
+{
+	"info": {
+		"_postman_id": "4824826f-c792-4518-9b5a-381ae2d1c593",
+		"name": "LSBank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"John.Doe@gmail.com\",\r\n    \"mobilePhone\": \"+1123456789\",\r\n    \"password\": \"secret\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/v1/accounts/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"accounts",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Duplicate Account Creation",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"John.Doe@gmail.com\",\r\n    \"mobilePhone\": \"+1123456789\",\r\n    \"password\": \"secret\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/accounts/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"accounts",
+								"create"
+							]
+						}
+					},
+					"status": "BAD REQUEST",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "63"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 11 Oct 2021 00:33:12 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"There is already an account with the data informed\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"John@gmail.com\",\r\n    \"mobilePhone\": \"+1123456789\",\r\n    \"password\": \"secret\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/accounts/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"accounts",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 11 Oct 2021 00:35:59 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"account\": \"Account successful created\",\n    \"accountId\": \"616386ef8617752ad5582ddf\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Activate Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"email@email.com\",\r\n    \"activationCode\": \"65381\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/v1/accounts/activate",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"accounts",
+						"activate"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"john@gmail.com\",\r\n    \"activationCode\": \"35120\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/accounts/activate",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"accounts",
+								"activate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "42"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Oct 2021 23:41:19 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": \"Account successful activated\"\n}"
+				},
+				{
+					"name": "Already activated",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"john@gmail.com\",\r\n    \"activationCode\": \"35120\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/accounts/activate",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"accounts",
+								"activate"
+							]
+						}
+					},
+					"status": "UNAUTHORIZED",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "38"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Oct 2021 23:44:51 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Account already activated\"\n}"
+				},
+				{
+					"name": "Invalid activation code",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"email@email.com\",\r\n    \"activationCode\": \"65381\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/accounts/activate",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"accounts",
+								"activate"
+							]
+						}
+					},
+					"status": "UNAUTHORIZED",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Oct 2021 23:45:58 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Invalid activation code\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = JSON.parse(responseBody);\r",
+							"\r",
+							"postman.setEnvironmentVariable(\"token\", response.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"John.doe@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/v1/accounts/auth",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"accounts",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account Balance - Owner",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/v1/accounts/balance",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"accounts",
+						"balance"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Invalid Token",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/v1/accounts/balance",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"accounts",
+								"balance"
+							]
+						}
+					},
+					"status": "UNAUTHORIZED",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 10 Oct 2021 21:55:17 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Invalid authentication token, please login again\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/v1/accounts/balance",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"accounts",
+								"balance"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "18"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 10 Oct 2021 21:55:50 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"balance\": 220\n}"
+				}
+			]
+		},
+		{
+			"name": "ALL Accounts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/v1/accounts/info",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"accounts",
+						"info"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IkRvZSIsIm1vYmlsZVBob25lIjoiKzExMjM0NTY3ODkiLCJhY2NvdW50SWQiOiI3MGQ4YTFlMTBmMjk0YjRkYjNjYjgwMWNkNjRmMTIzMCIsImdlbmVyYXRpb25EYXRlIjoiMTg6NDE6MTEiLCJleHAiOjE2MzM5MDU2NzF9.ZcyEBy8ti4-Oig48Afy5sjKt44ZmuthsQXU2PadVMF8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/v1/accounts/info",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"accounts",
+								"info"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "586"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 10 Oct 2021 21:41:27 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"accounts\": [\n        {\n            \"accountId\": \"70d8a1e10f294b4db3cb801cd64f1230\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"email\": \"john.doe@gmail.com\",\n            \"mobilePhone\": \"+1123456789\"\n        },\n        {\n            \"accountId\": \"ee5e15604321414c8f888ec3513d2caa\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"email\": \"john.doe2@gmail.com\",\n            \"mobilePhone\": \"+1123456789\"\n        },\n        {\n            \"accountId\": \"fb503b9235ff4e3d831826f811239750\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"email\": \"john.doe3@gmail.com\",\n            \"mobilePhone\": \"+1123456789\"\n        },\n        {\n            \"accountId\": \"92c42cc4e48a464998fef59f20b547f2\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"email\": \"john.doe4@gmail.com\",\n            \"mobilePhone\": \"+1123456789\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Invalid Token",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/v1/accounts/info",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"accounts",
+								"info"
+							]
+						}
+					},
+					"status": "UNAUTHORIZED",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 10 Oct 2021 21:42:23 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Invalid authentication token, please login again\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Account Info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/v1/accounts/info/John.doe@gmail.com",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"accounts",
+						"info",
+						"John.doe@gmail.com"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/v1/accounts/info/John.doe@gmail.com",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"accounts",
+								"info",
+								"John.doe@gmail.com"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "154"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 10 Oct 2021 22:05:47 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"account\": {\n        \"accountId\": \"70d8a1e10f294b4db3cb801cd64f1230\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"john.doe@gmail.com\",\n        \"mobilePhone\": \"+1123456789\"\n    }\n}"
+				},
+				{
+					"name": "Invalid Token",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "aaaaaaa",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/v1/accounts/info/John.doe@gmail.com",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"accounts",
+								"info",
+								"John.doe@gmail.com"
+							]
+						}
+					},
+					"status": "UNAUTHORIZED",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 10 Oct 2021 22:06:43 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Invalid authentication token, please login again\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Transfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\": 20.00,\r\n    \"account\": \"John@gmail.com\",\r\n    \"message\": \"Hello\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/v1/transactions/transfer",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"transactions",
+						"transfer"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 20.00,\r\n    \"account\": \"John.doe@gmail.com\",\r\n    \"message\": \"Hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/transactions/transfer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"transfer"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 10 Oct 2021 23:37:38 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionId\": \"616379409839a4e0908b5761\"\n}"
+				},
+				{
+					"name": "Invalid Token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}sdasdsdasdsa",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 20.00,\r\n    \"account\": \"John.doe@gmail.com\",\r\n    \"message\": \"Hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/transactions/transfer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"transfer"
+							]
+						}
+					},
+					"status": "UNAUTHORIZED",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 10 Oct 2021 23:39:08 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Invalid authentication token, please login again\"\n}"
+				},
+				{
+					"name": "Transfer same account owner",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 20.00,\r\n    \"account\": \"John@gmail.com\",\r\n    \"message\": \"Hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/transactions/transfer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"transfer"
+							]
+						}
+					},
+					"status": "UNAUTHORIZED",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "73"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 12 Oct 2021 20:59:07 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Destination account cannot be the same as the origin account\"\n}"
+				},
+				{
+					"name": "Not enough funds",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 20000.00,\r\n    \"account\": \"John2@gmail.com\",\r\n    \"message\": \"Hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/transactions/transfer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"transfer"
+							]
+						}
+					},
+					"status": "BAD REQUEST",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "29"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 12 Oct 2021 20:59:59 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Not enough funds\"\n}"
+				},
+				{
+					"name": "Destination account not found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 20.00,\r\n    \"account\": \"John2@gmail.com\",\r\n    \"message\": \"Hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/transactions/transfer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"transfer"
+							]
+						}
+					},
+					"status": "BAD REQUEST",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "42"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 12 Oct 2021 21:00:16 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Destination account not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Deposit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"email\": \"John.doe@gmail.com\",\r\n    \"amount\": 20.00,\r\n    \"message\": \"Hello\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/v1/transactions/deposit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"transactions",
+						"deposit"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"email\": \"John.doe@gmail.com\",\r\n    \"amount\": 20.00,\r\n    \"message\": \"Hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/transactions/deposit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"deposit"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 11 Oct 2021 00:25:26 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionId\": \"6163847671266263f1622a15\"\n}"
+				},
+				{
+					"name": "Invalid Token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}aaaaa",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"email\": \"John.doe@gmail.com\",\r\n    \"amount\": 20.00,\r\n    \"message\": \"Hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/transactions/deposit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"deposit"
+							]
+						}
+					},
+					"status": "UNAUTHORIZED",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 11 Oct 2021 00:26:06 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Invalid authentication token, please login again\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Withdraw",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"amount\": 20.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/v1/transactions/withdraw",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"transactions",
+						"withdraw"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Invalid Token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"amount\": 20.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/transactions/withdraw",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"withdraw"
+							]
+						}
+					},
+					"status": "UNAUTHORIZED",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 11 Oct 2021 00:27:02 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Invalid authentication token, please login again\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"amount\": 20.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/transactions/withdraw",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"withdraw"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 11 Oct 2021 00:28:03 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionId\": \"616385136ac5b693fe0b1101\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Loan",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"amount\": 20.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/v1/transactions/withdraw",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"transactions",
+						"withdraw"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Invalid Token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"amount\": 20.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/transactions/withdraw",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"withdraw"
+							]
+						}
+					},
+					"status": "UNAUTHORIZED",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 11 Oct 2021 00:27:02 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Invalid authentication token, please login again\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"amount\": 20.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/transactions/loan",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"loan"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 11 Oct 2021 01:08:13 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionId\": \"61638e7816e09d1c1ce2c2a2\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Statement",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/v1/transactions/30/statement",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"transactions",
+						"30",
+						"statement"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/v1/transactions/30/statement",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"30",
+								"statement"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "329"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 11 Oct 2021 00:41:12 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statement\": [\n        {\n            \"type\": \"DEPOSIT\",\n            \"amount\": 20,\n            \"dateTime\": \"2021-10-10T21:39:24.779000\",\n            \"fromAccount\": {},\n            \"toAccount\": {\n                \"accountId\": \"70d8a1e10f294b4db3cb801cd64f1230\",\n                \"firstName\": \"John\",\n                \"lastName\": \"Doe\",\n                \"mobilePhone\": \"+1123456789\",\n                \"email\": \"john.doe@gmail.com\"\n            },\n            \"transactionId\": \"f8727bc43e05495895427c24af6541e1\",\n            \"message\": \"Hello\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Invalid Token",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{token}}aaaaa",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/v1/transactions/30/statement",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"30",
+								"statement"
+							]
+						}
+					},
+					"status": "UNAUTHORIZED",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.5"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 11 Oct 2021 00:42:40 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Invalid authentication token, please login again\"\n}"
+				}
+			]
+		}
+	]
+}
