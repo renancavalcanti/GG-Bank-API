@@ -1,11 +1,11 @@
 import os
 
-CONST_MONGO_URL = os.environ.get('CONST_MONGO_URL')
-CONST_DATABASE = os.environ.get('CONST_DATABASE')
-CONST_ACCOUNT_COLLECTION = os.environ.get('CONST_ACCOUNT_COLLECTION')
-CONST_TRANSACTION_COLLECTION = os.environ.get('CONST_TRANSACTION_COLLECTION')
+CONST_MONGO_URL = "mongodb+srv://renancavalcanti:MITnAXrnsbw1IhHX@cluster0.m7z2x.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+CONST_DATABASE = "GG"
+CONST_ACCOUNT_COLLECTION = "Accounts"
+CONST_TRANSACTION_COLLECTION = "Transactions"
 
-TOKEN_SECRET = os.environ.get('TOKEN_SECRET')
+TOKEN_SECRET = "python"
 
 # 30 days
 JWT_EXPIRATION = 86400*30 

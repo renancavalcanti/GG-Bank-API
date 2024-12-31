@@ -225,7 +225,7 @@ async def getAccountInfo(email: str, sendAccountId: bool = False, sendAccountBal
       accountInfo.update({'accountId': account['accountId']})
     
     if sendAccountBalance:
-      accountInfo.update({'balance': account['balance']})
+      accountInfo.update({'balance': account.get('balance', 0)})
 
     accountInfo.update({'firstName': account['firstName']})
     accountInfo.update({'lastName': account['lastName']})
@@ -234,8 +234,8 @@ async def getAccountInfo(email: str, sendAccountId: bool = False, sendAccountBal
 
     return accountInfo
 
-  except:
-    raise ValueError('Error getting account information')
+  except Exception as ex:
+    raise ValueError('Error getting account information', ex)
 
 def addFundsToAccount(account: str, amount: float) -> bool:
     try:

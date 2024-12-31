@@ -56,7 +56,7 @@ class MongoDB(object):
 
     def connect(self) -> bool:
         try:
-            self.client(MongoClient(self.__connectionString,  ssl=True, ssl_cert_reqs=ssl.CERT_NONE))
+            self.client(MongoClient(self.__connectionString))
             dbName = str(self.__dataBaseName)
             self.dataBase(self.client()[dbName])
             return True
